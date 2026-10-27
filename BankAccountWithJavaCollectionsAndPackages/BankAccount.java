@@ -1,5 +1,3 @@
-package BankAccountWithOOP;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -33,29 +31,27 @@ public class BankAccount {
 
   public void deposit(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
-    transactionHistory.add(new Transaction("Deposit", amount));
 
     if (isFrozen) {
       System.out.println("Account is FROZEN. Unable to transact.");
       return;
     }
-    System.out.println("Amount deposited: " + roundedAmount);
     if (roundedAmount <= 0) {
       System.out.println("Invalid amount. Must be greater than 0");
       return;
     }
     balance = roundToTwoDecimals(balance + roundedAmount);
+    transactionHistory.add(new Transaction("Deposit", amount));
+    System.out.println("Amount deposited: " + roundedAmount);
     System.out.println("Current balance: " + balance);
   }
 
   public void withdraw(double amount) {
     double roundedAmount = roundToTwoDecimals(amount);
-    transactionHistory.add(new Transaction("Withdraw", amount));
     if (isFrozen) {
       System.out.println("Account is FROZEN. Unable to transact.");
       return;
     }
-    System.out.println("Amount withdrawn: " + roundedAmount);
     if (roundedAmount <= 0) {
       System.out.println("Invalid amount. Must be greater than 0");
       return;
@@ -65,6 +61,8 @@ public class BankAccount {
       return;
     }
     balance = roundToTwoDecimals(balance - roundedAmount);
+    transactionHistory.add(new Transaction("Withdraw", amount));
+    System.out.println("Amount withdrawn: " + roundedAmount);
     System.out.println("Current balance: " + balance);
   }
 

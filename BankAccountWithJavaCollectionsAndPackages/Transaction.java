@@ -1,12 +1,15 @@
-package BankAccountWithJavaCollectionsAndPackages;
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    String type;
-    double amount;
-    LocalDateTime timestamp;
+    private static final DateTimeFormatter TIMESTAMP_FORMAT =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    Transaction(String type, double amount) {
+    private String type;
+    private double amount;
+    private LocalDateTime timestamp;
+
+    public Transaction(String type, double amount) {
         this.type = type;
         this.amount = amount;
         this.timestamp = LocalDateTime.now();
@@ -17,7 +20,7 @@ public class Transaction {
         return "Transaction{" +
                 "type='" + type + '\'' +
                 ", amount=" + amount +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + timestamp.format(TIMESTAMP_FORMAT) +
                 '}';
     }
 

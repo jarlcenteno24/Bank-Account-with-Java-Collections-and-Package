@@ -1,7 +1,3 @@
-package BankAccountWithJavaCollectionsAndPackages;
-
-import BankAccountWithOOP.BankAccount;
-
 public class main {
    public main() {
    }
